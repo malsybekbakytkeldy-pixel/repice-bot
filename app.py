@@ -66,6 +66,10 @@ async def main():
     await dp.start_polling(bot)
 
 if __name__ == "__main__":
-    loop = asyncio.get_event_loop()
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
     loop.create_task(web_server())
-    asyncio.run(main())
+    try:
+        loop.run_until_complete(main())
+    except KeyboardInterrupt:
+        pass

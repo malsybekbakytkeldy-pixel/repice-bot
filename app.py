@@ -45,8 +45,8 @@ async def get_recipe(message: types.Message):
         await message.answer(recipe_text)
         
     except Exception as e:
-        await bot.delete_message(chat_id=message.chat.id, message_id=wait_msg.message_id)
-        await message.answer("⚠️ Қате шықты, қайта көріңіз.")
+    # Қатенің нақты себебін Telegram-ға тікелей жазып жіберсін
+    bot.reply_to(message, f"Қате: {e}")
 
 # Render порт талабын орындауға арналған веб-сервер
 async def handle(request):

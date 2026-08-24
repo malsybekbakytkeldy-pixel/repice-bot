@@ -2,6 +2,7 @@ import asyncio
 from aiogram import Bot, Dispatcher, types
 from aiogram.filters import CommandStart
 from openai import OpenAI
+from aiohttp import web
 
 # Өзіңіздің Telegram токеніңіз бен Groq кілтіңізді осында жазасыз:
 TELEGRAM_TOKEN = "8510266775:AAHsInW3u1GVNKI2-W6Q1vqxKCrh3Xy8v8Y"
@@ -47,9 +48,24 @@ async def get_recipe(message: types.Message):
         await bot.delete_message(chat_id=message.chat.id, message_id=wait_msg.message_id)
         await message.answer("⚠️ Қате шықты, қайта көріңіз.")
 
+# Render порт талабын орындауға арналған веб-сервер
+async def handle(request):
+    return web.Response(text="Bot is running!")
+
+app = web.Application()
+app.router.add_get("/", handle)
+
+async def web_server():
+    runner = web.AppRunner(app)
+    await runner.setup()
+    site = web.TCPSite(runner, "0.0.0.0", 10000)
+    await site.start()
+
 async def main():
     print("Бот серверде іске қосылды!")
     await dp.start_polling(bot)
 
 if __name__ == "__main__":
+    loop = asyncio.get_event_loop()
+    loop.create_task(web_server())
     asyncio.run(main())

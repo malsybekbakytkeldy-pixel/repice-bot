@@ -4,12 +4,11 @@ from aiogram.filters import CommandStart
 from openai import OpenAI
 from aiohttp import web
 
-# Өзіңіздің Telegram токеніңіз бен Groq кілтіңізді осында жазасыз:
 TELEGRAM_TOKEN = "8510266775:AAGk_1vdhRwAlff5PmAT0_pU5vfTqXUxQRw"
-GROQ_API_KEY = "gsk_..."  # Осында өз Groq кілтіңізді жазыңыз
+GROQ_API_KEY = "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" 
 
 client = OpenAI(
-    api_key=GROQ_API_KEY,
+    api_key="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",
     base_url="https://api.groq.com/openai/v1"
 )
 

@@ -5,7 +5,7 @@ from openai import OpenAI
 from aiohttp import web
 
 # Өзіңіздің Telegram токеніңіз бен Groq кілтіңізді осында жазасыз:
-TELEGRAM_TOKEN = "8510266775:AAHsInW3u1GVNKI2-W6Q1vqxKCrh3Xy8v8Y"
+TELEGRAM_TOKEN = "8510266775:AAGk_1vdhRwAlff5PmAT0_pU5vfTqXUxQRw"
 GROQ_API_KEY = "gsk_..."  # Осында өз Groq кілтіңізді жазыңыз
 
 client = OpenAI(

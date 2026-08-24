@@ -45,8 +45,8 @@ async def get_recipe(message: types.Message):
         await message.answer(recipe_text)
         
     except Exception as e:
-    # Қатенің нақты себебін Telegram-ға тікелей жазып жіберсін
-    bot.reply_to(message, f"Қате: {e}")
+        # Қатенің нақты себебін Telegram-ға тікелей жазып жіберсін
+        bot.reply_to(message, f"Қате: {e}")
 
 # Render порт талабын орындауға арналған веб-сервер
 async def handle(request):

@@ -31,7 +31,7 @@ async def get_recipe(message: types.Message):
         prompt = f"Сен тәжірибелі шеф-аспазсың. Мына тағамның рецептін қазақ тілінде, түсінікті етіп, ингредиенттерімен және дайындалу жолымен толық жазып бер: {user_text}"
         
         response = client.chat.completions.create(
-            model="llama-3.1-70b-versatile",
+            model="openai/gpt-oss-120b",
             messages=[
                 {"role": "system", "content": "Сен қазақ тілінде жауап беретін көмекшісің."},
                 {"role": "user", "content": prompt}

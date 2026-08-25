@@ -31,7 +31,7 @@ async def get_recipe(message: types.Message):
         prompt = f"Сен тәжірибелі шеф-аспазсың. Мына тағамның рецептін қазақ тілінде, түсінікті етіп, ингредиенттерімен және дайындалу жолымен толық жазып бер: {user_text}"
         
         response = client.chat.completions.create(
-            model="llama3-8b-8192",
+            model="llama-3.1-70b-versatile",
             messages=[
                 {"role": "system", "content": "Сен қазақ тілінде жауап беретін көмекшісің."},
                 {"role": "user", "content": prompt}

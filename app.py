@@ -8,7 +8,7 @@ TELEGRAM_TOKEN = "8510266775:AAGk_1vdhRwAlff5PmAT0_pU5vfTqXUxQRw"
 GROQ_API_KEY = "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" 
 
 client = OpenAI(
-    api_key="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",
+    api_key=GROQ_API_KEY,
     base_url="https://api.groq.com/openai/v1"
 )
 
@@ -44,8 +44,9 @@ async def get_recipe(message: types.Message):
         await message.answer(recipe_text)
         
     except Exception as e:
-        # Қатенің нақты себебін Telegram-ға тікелей жазып жіберсін
-        bot.reply_to(message, f"Қате: {e}")
+        # aiogram бойынша дұрыс жауап беру тәсілі
+        await bot.delete_message(chat_id=message.chat.id, message_id=wait_msg.message_id)
+        await message.answer(f"❌ Қате орын алды: {e}")
 
 # Render порт талабын орындауға арналған веб-сервер
 async def handle(request):
